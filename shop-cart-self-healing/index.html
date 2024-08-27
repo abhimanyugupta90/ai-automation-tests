@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple E-commerce Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        select, button {
+            margin: 5px 0;
+            padding: 5px;
+        }
+        #cart {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple E-commerce Website</h1>
+    
+    <div id="product-list">
+        <div class="product">
+            <h2>T-Shirt</h2>
+            <select id="tshirt-size-new" name="tshirt-size-new">
+                <option value="">Select Size</option>
+                <option value="s">Small</option>
+                <option value="m">Medium</option>
+                <option value="l">Large</option>
+                <option value="xl">X-Large</option>
+            </select>
+            <select id="tshirt-color-xyz" name="tshirt-color-xyz">
+                <option value="">Select Color</option>
+                <option value="red">Red</option>
+                <option value="blue">Blue</option>
+                <option value="green">Green</option>
+                <option value="black">Black</option>
+            </select>
+            <button id="add-tshirt" onclick="addToCart('T-Shirt')">Add to Cart</button>
+        </div>
+        
+        <div class="product">
+            <h2>Jeans</h2>
+            <select id="jeans-size" name="jeans-size">
+                <option value="">Select Size</option>
+                <option value="28">28</option>
+                <option value="30">30</option>
+                <option value="32">32</option>
+                <option value="34">34</option>
+            </select>
+            <select id="jeans-style" name="jeans-style">
+                <option value="">Select Style</option>
+                <option value="slim">Slim Fit</option>
+                <option value="regular">Regular Fit</option>
+                <option value="relaxed">Relaxed Fit</option>
+            </select>
+            <button id="add-jeans" onclick="addToCart('Jeans')">Add to Cart</button>
+        </div>
+    </div>
+
+    <div id="cart">
+        <h2>Shopping Cart</h2>
+        <ul id="cart-items"></ul>
+    </div>
+
+    <script>
+        function addToCart(product) {
+            let cartItems = document.getElementById('cart-items');
+            let listItem = document.createElement('li');
+            
+            if (product === 'T-Shirt') {
+                let size = document.getElementById('tshirt-size-new').value;
+                let color = document.getElementById('tshirt-color-xyz').value;
+                if (size && color) {
+                    listItem.textContent = `T-Shirt - Size: ${size.toUpperCase()}, Color: ${color}`;
+                    cartItems.appendChild(listItem);
+                } else {
+                    alert('Please select both size and color for T-Shirt');
+                }
+            } else if (product === 'Jeans') {
+                let size = document.getElementById('jeans-size').value;
+                let style = document.getElementById('jeans-style').value;
+                if (size && style) {
+                    listItem.textContent = `Jeans - Size: ${size}, Style: ${style}`;
+                    cartItems.appendChild(listItem);
+                } else {
+                    alert('Please select both size and style for Jeans');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

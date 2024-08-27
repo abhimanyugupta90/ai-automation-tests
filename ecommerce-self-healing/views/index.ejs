@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Demo</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>E-commerce Demo</h1>
+    <div id="product-list">
+        <% products.forEach(product => { %>
+            <div class="product">
+                <h2><%= product.name %></h2>
+                <p>Price: $<%= product.price.toFixed(2) %></p>
+                <form class="add-to-cart-form" data-product-id="<%= product.id %>">
+                    <select name="size" id="size-<%= product.id %>">
+                        <% product.sizes.forEach(size => { %>
+                            <option value="<%= size %>"><%= size %></option>
+                        <% }) %>
+                    </select>
+                    <% if (product.colors) { %>
+                        <select name="color" id="color-<%= product.id %>">
+                            <% product.colors.forEach(color => { %>
+                                <option value="<%= color %>"><%= color %></option>
+                            <% }) %>
+                        </select>
+                    <% } %>
+                    <% if (product.styles) { %>
+                        <select name="style" id="style-<%= product.id %>">
+                            <% product.styles.forEach(style => { %>
+                                <option value="<%= style %>"><%= style %></option>
+                            <% }) %>
+                        </select>
+                    <% } %>
+                    <button type="submit">Add to Cart</button>
+                </form>
+            </div>
+        <% }) %>
+    </div>
+    <a href="/cart">View Cart</a>
+    <script src="/script.js"></script>
+</body>
+</html>

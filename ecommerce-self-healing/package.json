@@ -1,0 +1,43 @@
+{
+    "name": "ecommerce-demo",
+    "version": "1.0.0",
+    "description": "A demo e-commerce application with self-healing tests",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js",
+      "dev": "nodemon app.js",
+      "test": "jest"
+    },
+    "keywords": [
+      "ecommerce",
+      "demo",
+      "self-healing",
+      "tests"
+    ],
+    "author": "Your Name",
+    "license": "ISC",
+    "dependencies": {
+      "express": "^4.17.1",
+      "ejs": "^3.1.6",
+      "body-parser": "^1.19.0",
+      "axios": "0.21.1"
+    },
+    "devDependencies": {
+      "jest": "^27.0.6",
+      "nodemon": "^2.0.12",
+      "supertest": "^6.1.4",
+      "puppeteer": "^10.2.0",
+      "jsdom": "^16.6.0"
+    },
+    "jest": {
+      "testEnvironment": "node",
+      "testMatch": [
+        "**/test/**/*.test.js",
+        "**/test/**/*.spec.js"
+      ],
+      "transform": {},
+      "transformIgnorePatterns": [
+        "/node_modules/(?!axios)/"
+      ]
+    }
+  }
